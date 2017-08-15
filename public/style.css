@@ -1,0 +1,18 @@
+.job{
+  width: 40vw;
+  font-size: 20pt;
+}
+.container{
+  display: flex;
+  /*flex-direction: column;*/
+
+  background: orange;
+  width: 100vw;
+  height: 300vw;
+}
+
+.box{
+
+  width: 20vw;
+  height: 20vw;
+}
