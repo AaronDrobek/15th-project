@@ -1,10 +1,34 @@
+a{
+  text-decoration: none;
+}
 .job{
-  width: 40vw;
+  margin-bottom: 0;
+  font-size: 12pt;
+}
+.job-2{
+  color: red;
+}
+.name{
+  border: none;
+  text-decoration: none;
+  outline: none;
   font-size: 20pt;
+}
+.company{
+  text-decoration: none;
+  margin-top: 0;
+}
+.picture{
+
+  margin-left: 3vw;
+  width: 16vw;
+  height: 12vw;
+
 }
 .container{
   display: flex;
-  /*flex-direction: column;*/
+  flex-direction: row;
+  flex-wrap: wrap;
 
   background: orange;
   width: 100vw;
@@ -12,7 +36,8 @@
 }
 
 .box{
-
+  padding-left: 2vw;
+  padding-right: 2vw;
   width: 20vw;
   height: 20vw;
 }

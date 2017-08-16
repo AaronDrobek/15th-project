@@ -7,23 +7,22 @@
   </head>
   <body>
     <div class="container">
-      <div class="box">
 
-
-        {{#users}}
-      <img src= "{{avatar}}" alt="">
-      <h1 class= "name"> {{name}} </h1>
-        {{#job}}
+      {{#users}}
+      <a href="/listing/{{id}}">
+        <div class="box">
+          <img class = "picture" src= "{{avatar}}" alt="">
+          <h1 class= "name"> {{name}} </h1>
+          {{#job}}
           <h3 class= "job">{{job}}</h3>
-        {{/job}}
-        {{^job}}
-          <h3 class= "job">Available for hire</h3>
-        {{/job}}
-
-
-
-        {{/users}}
-      </div>
+          {{/job}}
+          {{^job}}
+          <h3 class= "job-2">Available for hire</h3>
+          {{/job}}
+          <h4 class= "company">{{company}}</h4>
+        </div>
+      </a>
+      {{/users}}
     </div>
   </body>
-</html>
+  </html>

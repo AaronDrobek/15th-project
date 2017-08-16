@@ -19,10 +19,15 @@ app.get('/', function (req, res) {
     res.render('index', data);
 })
 
-// app.get('/listing/:id', function(req, res){
-//   req.params.id
-//
-// })
+
+app.get('/listing/:id', function (req, res) {
+
+  let user = data.users.[req.params.id[-1]];
+
+  res.render('listing',  user);
+
+
+})
 
 
 
