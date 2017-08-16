@@ -16,15 +16,18 @@ app.set('view engine', 'mustache');
 
 app.get('/', function (req, res) {
 
-    res.render('index', data);
+    res.render('index', data );
 })
 
 
 app.get('/listing/:id', function (req, res) {
+  let id = req.params.id;
+  // let user = data.users[req.params.id-1];
+  let user = data.users.find(function(user){
+      return user.id == id;
+  });
 
-  let user = data.users.[req.params.id[-1]];
-
-  res.render('listing',  user);
+  res.render('listing', user );
 
 
 })
