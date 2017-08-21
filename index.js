@@ -1,7 +1,8 @@
-const data = require("./data.js");
+const Data = require("./models/data.js");
 const express = require('express');
 const mustacheExpress = require('mustache-express');
 const path = require("path");
+const router = require("./routes/user")
 const app = express();
 
 // app.use('/project', express.static(path.join(__dirname, '/project')))
@@ -12,25 +13,9 @@ app.engine('mustache', mustacheExpress());
 app.set('views', './views');
 app.set('view engine', 'mustache');
 
+app.use(router);
 
 
-app.get('/', function (req, res) {
-
-    res.render('index', data );
-})
-
-
-app.get('/listing/:id', function (req, res) {
-  let id = req.params.id;
-  // let user = data.users[req.params.id-1];
-  let user = data.users.find(function(user){
-      return user.id == id;
-  });
-
-  res.render('listing', user );
-
-
-})
 
 
 
