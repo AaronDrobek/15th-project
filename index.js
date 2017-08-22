@@ -1,4 +1,4 @@
-const Data = require("./models/data.js");
+// const Data = require("./models/data.js");
 const express = require('express');
 const mustacheExpress = require('mustache-express');
 const path = require("path");
@@ -10,7 +10,8 @@ const app = express();
 app.use("/public", express.static("public"));
 
 app.engine('mustache', mustacheExpress());
-app.set('views', './views');
+app.set("views", path.join(__dirname, "views"));
+app.set('layout', 'layout');
 app.set('view engine', 'mustache');
 
 app.use(router);

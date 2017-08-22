@@ -1,6 +1,19 @@
 a{
   text-decoration: none;
 }
+.employed{
+  margin-left: 4vw;
+  height: 2vw;
+
+}
+nav{
+  width: 100vw;
+  height: 2vw;
+}
+.un_employed{
+  margin-left: 4vw;
+  height: 2vw;
+}
 .job{
   margin-bottom: 0;
   font-size: 12pt;
@@ -32,10 +45,11 @@ a{
 
   background: orange;
   width: 100vw;
-  height: 300vw;
+  /*height: 300vw;*/
 }
 
 .box{
+  padding-bottom: 2vw;
   padding-left: 2vw;
   padding-right: 2vw;
   width: 20vw;
