@@ -26,6 +26,8 @@ const robotSchema = new mongoose.Schema({
   }
 });
 
+
+
 robotSchema.virtual('password')
     .get(function() {
         return null

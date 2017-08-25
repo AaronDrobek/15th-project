@@ -16,6 +16,11 @@ a{
   height: 2vw;
 
 }
+.signup_block{
+  width: 100vw;
+  height: 40vw;
+  display: flex;
+}
 nav{
   width: 100vw;
   height: 2vw;
@@ -25,7 +30,7 @@ nav{
   font-weight: bold;
   font-family: sans-serif;
   margin-left: 4vw;
-  height: 2vw;  
+  height: 2vw;
 }
 .un_employed{
   font-size: 18pt;
