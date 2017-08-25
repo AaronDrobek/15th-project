@@ -14,8 +14,13 @@
       {{^university}}
       <h2 class= "not_university"></h3>
       {{/university}}
-
       <h3 class= "skills">{{#skills}}{{.}}{{/skills}}</h3>
+
+        <a href="/edit"><button name="edit">Edit</button></a>
+        <form class="" action="/delete" method="post">
+          <button type="submit" name="Delete">Delete</button>
+
+        </form>
 
     </div>
   </div>

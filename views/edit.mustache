@@ -1,23 +1,40 @@
 <div class="edit_block">
   <form class="edit" action="/edit" method="post">
-
+    <h1>Edit Your Profile</h1>
     {{#users}}
     <input type="text" name="username" value="{{username}}" placeholder="Username">
+    <br>
     <input type="text" name="password" value="{{password}}" placeholder="Password">
+    <br>
     <input type="text" name="name" value="{{name}}" placeholder="Name">
+    <br>
+    <input type="text" name="avatar" src="{{avatar}}" placeholder="Avatar">
+    <br>
     <input type="text" name="email" value="{{email}}" placeholder="Email">
+    <br>
     <input type="text" name="university" value="{{university}}" placeholder="University">
+    <br>
     <input type="text" name="job" value="{{job}}" placeholder="Job">
+    <br>
     <input type="text" name="company" value="{{company}}" placeholder="Company">
+    <br>
     <input type="text" name="skills" value="{{skills}}" placeholder="Skills">
-    <input type="phone" name="phone" value="{{phone}}" placeholder="Phone">
-    <input type="text" name="address" value="{{address}}" placeholder="Address">
-    <input type="text" name="street_num" value="{{street_num}}" placeholder="Street Number">
-    <input type="text" name="street_name" value="{{street_name}}" placeholder="Street Name">
-    <input type="text" name="city" value="{{city}}" placeholder="City">
-    <input type="text" name="state_or_province" value="{{state_or_province}}" placeholder="State or Province">
-    <input type="text" name="postal_code" value="{{postal_code}}" placeholder="Postal Code">
-    <input type="text" name="country" value="{{country}}" placeholder="Country">
+    <br>
+    <input type="tel" name="phone" value="{{phone}}" placeholder="Phone">
+    <br>
+    <!-- <input type="text" name="address" value="" placeholder="Address"> -->
+    <input type="text" name="street_num" value="{{address.street_num}}" placeholder="Street Number">
+    <br>
+    <input type="text" name="street_name" value="{{address.street_name}}" placeholder="Street Name">
+    <br>
+    <input type="text" name="city" value="{{address.city}}" placeholder="City">
+    <br>
+    <input type="text" name="state_or_province" value="{{address.state_or_province}}" placeholder="State or Province">
+    <br>
+    <input type="text" name="postal_code" value="{{address.postal_code}}" placeholder="Postal Code">
+    <br>
+    <input type="text" name="country" value="{{address.country}}" placeholder="Country">
+    <br>
     <button type="submit" name="button">Submit</button>
     {{/users}}
   </form>

@@ -16,6 +16,32 @@ a{
   height: 2vw;
 
 }
+#signup{
+  font-size: 20pt;
+  color: red;
+  margin-top: 8vw;
+  margin-left: 2vw;
+  width: 9vw;
+  height: 4vw;
+}
+.login_block button{
+  font-size: 18pt;
+  color: blue;
+  margin-top: 2vw;
+  margin-left: 9vw;
+  width: 9vw;
+  height: 4vw;
+}
+.login_block{
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  height: 40vw;
+}
+.login_block input{
+  margin-top: 4vw;
+  font-size: 28pt;
+}
 .signup_block{
   width: 100vw;
   height: 40vw;
@@ -79,6 +105,9 @@ nav{
 .profile_box{
   /*width: 100vw;*/
 }
+.signup{
+  font-size: 18pt;
+}
 
 .box{
   padding-bottom: 2vw;
@@ -86,4 +115,16 @@ nav{
   padding-right: 2vw;
   width: 20vw;
   height: 20vw;
+}
+.edit_block{
+  width: 100vw;
+  height: 100vw;
+  display: flex;
+}
+.edit_block input{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 1vw;
+  font-size: 8pt;
 }

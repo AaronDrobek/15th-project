@@ -2,7 +2,7 @@
 const express = require("express");
 const mustacheExpress = require("mustache-express");
 const path = require("path");
-const routes = require("./routes/user");
+const routes = require("./routes/index");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -10,7 +10,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const session = require('express-session');
 const flash = require('express-flash-messages');
-const Robot = require("./models/robot");
+const User = require("./models/robot");
 
 const app = express();
 

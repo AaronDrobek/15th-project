@@ -57,6 +57,7 @@ robotSchema.statics.authenticate = function(username, password, done) {
 
 
 
-const Robot = mongoose.model("User", robotSchema);
 
-module.exports = Robot;
+const User = mongoose.model("User", robotSchema);
+
+module.exports = User;
