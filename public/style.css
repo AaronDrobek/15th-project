@@ -1,7 +1,17 @@
 a{
   text-decoration: none;
 }
+.allRobots{
+  margin-left: 4vw;
+  height: 2vw;
+  font-size: 18pt;
+  font-weight: bold;
+  font-family: sans-serif;
+}
 .employed{
+  font-size: 18pt;
+  font-weight: bold;
+  font-family: sans-serif;
   margin-left: 4vw;
   height: 2vw;
 
@@ -10,7 +20,17 @@ nav{
   width: 100vw;
   height: 2vw;
 }
+.log_out{
+  font-size: 18pt;
+  font-weight: bold;
+  font-family: sans-serif;
+  margin-left: 4vw;
+  height: 2vw;  
+}
 .un_employed{
+  font-size: 18pt;
+  font-weight: bold;
+  font-family: sans-serif;
   margin-left: 4vw;
   height: 2vw;
 }
@@ -45,7 +65,14 @@ nav{
 
   background: orange;
   width: 100vw;
-  /*height: 300vw;*/
+  /*height: 250vw;*/
+}
+.info_pic{
+  /*width: 100vw;*/
+
+}
+.profile_box{
+  /*width: 100vw;*/
 }
 
 .box{

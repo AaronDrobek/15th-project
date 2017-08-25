@@ -1,157 +1,126 @@
 const express = require("express");
 const router = express.Router();
-let data = [];
+const Robot = require("../models/robot");
+const mongoose =require("mongoose");
 
-const getLayout = function(req, res, next) {
-    let MongoClient = require("mongodb").MongoClient;
-    let assert = require("assert");
-
-    let url = "mongodb://localhost:27017/robots";
-    MongoClient.connect(url, function(err, db){
-      assert.equal(null, err);
-
-      getData(db, function(){
-        db.close();
-        next();
-      });
-    });
-
-    let getData = function(db, callback){
-      let users = db.collection("users");
-
-      users.find({}).toArray().then(function(users){
-          data = users;
-          console.log("this is email", data[0].email);
-          callback();
-      });
-
-    };
-};
-const getListings = function(req, res, next) {
-    let MongoClient = require("mongodb").MongoClient;
-    let assert = require("assert");
-
-    let url = "mongodb://localhost:27017/robots";
-    MongoClient.connect(url, function(err, db){
-      assert.equal(null, err);
-
-      getData(db, function(){
-        db.close();
-        next();
-      });
-    });
-
-    let getData = function(db, callback){
-      let users = db.collection("users");
-      users.find({id: Number(req.params.id)}).toArray().then(function(users){
-        console.log(users);
-          data = users;
-          console.log(data);
-          callback();
-      });
-
-    };
-};
-
-const getUnEmployed = function(req, res, next) {
-    let MongoClient = require("mongodb").MongoClient;
-    let assert = require("assert");
-
-    let url = "mongodb://localhost:27017/robots";
-    MongoClient.connect(url, function(err, db){
-      assert.equal(null, err);
-
-      getData(db, function(){
-        db.close();
-        next();
-      });
-    });
-
-    let getData = function(db, callback){
-      let users = db.collection("users");
-
-      users.find({}).toArray().then(function(users){
-          data = []
-          let jobSearch = false;
-          if (req.params.job === "employed") {
-            jobSearch = true;
-          }
-          for (var i = 0; i < users.length; i++) {
-            if (jobSearch) {
-              if (users[i].job) {
-                data.push(users[i]);
-              }
-            } else {
-              if (!users[i].job) {
-                data.push(users[i]);
-              }
-            }
-          }
-          // console.log("unemployed",users);
-
-          callback();
-      });
-
-    };
-};
-
-// const getListings = function(req, res, next) {
-//     let MongoClient = require("mongodb").MongoClient;
-//     let assert = require("assert");
-//
-//     let url = "mongodb://localhost:27017/robots";
-//     MongoClient.connect(url, function(err, db){
-//       assert.equal(null, err);
-//
-//       getData(db, function(){
-//         db.close();
-//         next();
-//       });
-//     });
-//
-//     let getData = function(db, callback){
-//       let users = db.collection("users");
-//
-//       users.find({}).toArray().then(function(users){
-//           data = users;
-//           callback();
-//       });
-//
-//     };
-// };
-
-router.get('/', getLayout, function (req, res) {
-    res.render('allUsers', {users: data});
-})
+mongoose.connect("mongodb://localhost:27017/robots");
 
 
 
-router.get('/listing/:id', getListings, function (req, res) {
-  // let id = req.params.id;
-  // let user = data.find(function(user){
-  //     return user.id == id;
-  // });
-console.log(data);
-  res.render('listing', {users: data} );
+router.get('/allUsers', function (req, res) {
+  Robot.find({}).sort("name")
+  .then(function(users) {
+    data = users
+    res.render('allUsers', {users: users});
+  })
+  .catch(function(err) {
+    console.log(err);
+    next(err);
+  })
+});
 
 
-})
+router.get('/listing/:id',function (req, res) {
+  Robot.find({_id: req.params.id})
+  .then(function(user) {
+    console.log(user);
+    res.render('listing', {users: user} );
+  })
+  .catch(function(err) {
+    console.log(err);
+    next(err);
+  })
+});
 
-// router.get("/employed", getEmployed, function (req, res){
-// res.render("employed", {users: data});
-// })
 
-router.get("/looking/:job", getUnEmployed, function (req, res){
-  if (data[0].job === null){
-    res.render("looking", {users: data})
-  }else {
-    res.render("employed", {users: data})
+router.get("/looking/:job", function (req, res){
+  if (req.params.job === "unemployed") {
+    Robot.find({job: null})
+    .then(function(users) {
+      res.render('looking', {users: users} );
+    })
+    .catch(function(err) {
+      console.log(err);
+      next(err);
+    })
+  } else {
+    let data = []
+    Robot.find({})
+    .then(function(users) {
+      for (var i = 0; i < users.length; i++) {
+        if (users[i].job){
+          data.push(users[i])
+        }
+      }
+      res.render("employed", {users: data})
+    })
+      .catch(function(err) {
+        console.log(err);
+        next(err);
+      })
+
   }
 })
+//start new code
+router.post('/go_to_signup',function (req, res) {
+  // Robot.find({})
+  // .then(function(user) {
+  //   console.log(user);
+    res.render("signup");
+  // })
+  // .catch(function(err) {
+  //   console.log(err);
+  //   next(err);
+  // })
+});
+
+
+
+router.get('/',function (req, res) {
+  Robot.find({_id: req.params.id})
+  .then(function(user) {
+    console.log(user);
+    res.render('login', {users: user} );
+  })
+  .catch(function(err) {
+    console.log(err);
+    next(err);
+  })
+});
+
+router.post("/signup", function(req, res){
+  Robot.create({
+    username: req.body.username,
+    passwordHash: req.body.password,
+    name: req.body.name,
+    avatar: req.body.avatar,
+    email: req.body.email,
+    university: req.body.university,
+    job: req.body.job,
+    company: req.body.company,
+    skills: req.body.skills,
+    phone: req.body.phone,
+    address: {
+      street_num: req.body.street_num,
+      street_name: req.body.stree_name,
+      city: req.body.city,
+      state_or_province: req.body.state_or_province,
+      postal_code: req.body.postal_code,
+      country: req.body.country
+    }
+  })
+    .then(function(data){
+      console.log(data);
+      res.redirect('/')
+    })
+    .catch(function(err){
+      console.log(err);
+    })
+  })
 
 
 
 
 
 
-module.exports = router;
+module.exports=router;
