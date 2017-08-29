@@ -194,7 +194,7 @@ router.post("/signup", function(req, res){
       phone: req.body.phone,
       address: {
         street_num: req.body.street_num,
-        street_name: req.body.stree_name,
+        street_name: req.body.street_name,
         city: req.body.city,
         state_or_province: req.body.state_or_province,
         postal_code: req.body.postal_code,
